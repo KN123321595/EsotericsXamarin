@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EsotericsXamarin.ScreenPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <RelativeLayout>
+            <StackLayout HorizontalOptions="Center">
+
+                <StackLayout Orientation="Horizontal" 
+                             HorizontalOptions="CenterAndExpand"
+                             Spacing="20">
+
+                    <Button Text="Сделать фото"
+                            x:Name="TakePhotoBtn"
+                            Clicked="TakePhotoAsync"
+                            Margin="30,20"/>
+
+                    <Button Text="Выбрать фото"
+                            x:Name="getPhotoBtn"
+                            Clicked="GetPhotoAsync"
+                            Margin="0,20"/>
+
+                </StackLayout>
+
+                <Image x:Name="image"/>
+
+                <Button Text="Complete"
+                        Margin="50"/>
+
+            </StackLayout>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

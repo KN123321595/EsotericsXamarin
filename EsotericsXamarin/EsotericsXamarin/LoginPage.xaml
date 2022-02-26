@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EsotericsXamarin.LoginPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <RelativeLayout>
+
+            <StackLayout RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1, Constant=0}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2, Constant=0}">
+                
+                <Image Source="user.png" 
+                       HeightRequest="90"/>
+                
+                <Label Text="Login" HorizontalOptions="Center" 
+                       FontSize="36" 
+                       FontAttributes="Bold" 
+                       TextColor="Black" />
+                
+                <Entry Placeholder="Email" 
+                       Margin="10,0,10,0"/>
+                
+                <Entry Placeholder="Password" 
+                       Margin="10,0,10,0"
+                       IsPassword="True"/>
+                
+                <Button Text="Login" 
+                        Margin="110,0,110,0" 
+                        TextColor="White"
+                        BackgroundColor="DarkGray"
+                        Clicked="Button_Clicked"/>
+            </StackLayout>
+
+            <Label x:Name="forgotPasswordLabel" 
+                   Text="Forgot Password" 
+                   FontSize="22" 
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.3, Constant=0}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.8, Constant=-50}"
+                   FontAttributes="Italic"
+                   TextColor="Red"/>
+
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

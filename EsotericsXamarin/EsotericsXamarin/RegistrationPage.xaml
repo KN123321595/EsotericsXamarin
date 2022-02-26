@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EsotericsXamarin.RegistrationPage"
+             NavigationPage.HasNavigationBar="False"
+             IsTabStop="True">
+    <ContentPage.Content>
+        <RelativeLayout>
+
+            <StackLayout RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1, Constant=-10}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2, Constant=0}">
+                
+                <Image Source="user.png" 
+                       HeightRequest="90"/>
+                
+                <Label Text="Registration" HorizontalOptions="Center" 
+                       FontSize="36" 
+                       FontAttributes="Bold" 
+                       TextColor="Black"/>
+                
+                <Entry Placeholder="Email" 
+                       />
+                
+                <Entry Placeholder="Password" 
+                       IsPassword="True"/>
+                
+                <Entry Placeholder="Phone Number" 
+                       Keyboard="Telephone"/>
+                
+                <Button Text="Registration" 
+                        Margin="110,0,110,0" 
+                        TextColor="White"
+                        BackgroundColor="DarkGray"
+                        Clicked="Button_Reg_Clicked"/>
+            </StackLayout>
+
+            <Label x:Name="logInLabel" 
+                   Text="Log-in" 
+                   FontSize="22" 
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.8, Constant=-20}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-50}"/>
+
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

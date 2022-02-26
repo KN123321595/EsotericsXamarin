@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:EsotericsXamarin"
+             x:Class="EsotericsXamarin.MainPage">
+
+    <Shell.FlyoutHeader>
+        <StackLayout Padding="20">
+
+            <Image Source="user.png"
+                   HeightRequest="100"/>
+
+        </StackLayout>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Name"
+                Route="Name">
+        <Tab Title="Западная">
+            <ShellContent Title="Франция">
+                <ContentPage Title="Франция">
+                    <StackLayout>
+                        <Label Text="Париж"/>
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+
+            <ShellContent Title="Британия">
+                <ContentPage Title="Британия">
+                    <StackLayout>
+                        <Label Text="Лондон"/>
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+        </Tab>
+
+    </FlyoutItem>
+
+    <FlyoutItem Title="Vechile">
+
+        <ContentPage NavigationPage.HasNavigationBar="False">
+            <StackLayout>
+                <Label Text="fwegrgregrehteht"/>
+            </StackLayout>
+        </ContentPage>
+        
+    </FlyoutItem>
+
+    <FlyoutItem Title="Contact">
+
+        <ContentPage NavigationPage.HasNavigationBar="False">
+            <StackLayout>
+                <Label Text="fwegrgregrehteht"/>
+            </StackLayout>
+        </ContentPage>
+        
+    </FlyoutItem>
+
+    <FlyoutItem Title="OrderHistory">
+
+        <ContentPage NavigationPage.HasNavigationBar="False">
+            <StackLayout>
+                <Label Text="fwegrgregrehteht"/>
+            </StackLayout>
+        </ContentPage>
+        
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Logout">
+
+        <ShellContent ContentTemplate="{DataTemplate pages:LogoutPage}"/>
+
+    </FlyoutItem>
+
+</Shell>
