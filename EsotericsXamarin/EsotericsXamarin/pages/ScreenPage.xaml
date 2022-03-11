@@ -19,16 +19,23 @@
                     <Button Text="Выбрать фото"
                             x:Name="getPhotoBtn"
                             Clicked="GetPhotoAsync"
-                            Margin="0,20"/>
+                            Margin="20,20"/>
 
                 </StackLayout>
 
                 <Image x:Name="image"/>
 
-                <Button Text="Complete"
-                        Margin="50"/>
+                
 
             </StackLayout>
+
+            <Button x:Name="enterBut" 
+                    Text="Complete"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1, Constant=10}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.9, Constant=0}"
+                    WidthRequest="300"
+                    Clicked="enterBut_Clicked"/>
+            
         </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>
