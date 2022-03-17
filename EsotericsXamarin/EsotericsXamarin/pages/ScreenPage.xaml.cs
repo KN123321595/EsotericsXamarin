@@ -32,20 +32,6 @@ namespace EsotericsXamarin
         {
             try
             {
-                //photo = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions
-                //{
-                //    Title = $"xamarin.{DateTime.Now.ToString("dd.MM.yyyy_hh.mm.ss")}.png"
-                //});
-
-                //var newFile = Path.Combine(FileSystem.AppDataDirectory, photo.FileName);
-
-                //var stream = await photo.OpenReadAsync();
-
-                //var newStream = File.OpenWrite(newFile);
-
-                //await stream.CopyToAsync(newStream);
-
-                //image.Source = ImageSource.FromFile(photo.FullPath);
 
                 await CrossMedia.Current.Initialize();
 
@@ -75,17 +61,7 @@ namespace EsotericsXamarin
 
         private async void GetPhotoAsync(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    photo = await MediaPicker.PickPhotoAsync();
 
-            //    image.Source = ImageSource.FromFile(photo.FullPath);
-            //}
-
-            //catch (Exception ex)
-            //{
-            //    await DisplayAlert("Сообщение об ошибке", ex.Message, "OK");
-            //}
 
             try
             {
@@ -123,9 +99,10 @@ namespace EsotericsXamarin
             
             string result = await response.Content.ReadAsStringAsync();
 
-            
+            ImportImage importImage = JsonConvert.DeserializeObject<ImportImage>(result);
 
-            
+            await DisplayAlert("Описание", importImage.desc, "OK");
+          
 
         }
     }
