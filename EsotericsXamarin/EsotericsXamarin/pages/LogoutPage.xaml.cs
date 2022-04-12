@@ -20,15 +20,15 @@ namespace EsotericsXamarin
         protected async override void OnAppearing()
         {
 
-            bool result = await DisplayAlert(null, "Are you sure on to Logout", "Yes", "No");
+            bool result = await DisplayAlert(null, "Are you sure on to Logout?", "Yes", "No");
 
             if (result)
             {
-
+                
             }
 
             else
-                await Shell.Current.GoToAsync("//Name");
+                await Shell.Current.GoToAsync("//Screen");
 
             base.OnAppearing();
         }

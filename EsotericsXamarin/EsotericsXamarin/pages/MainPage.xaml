@@ -13,25 +13,21 @@
         </StackLayout>
     </Shell.FlyoutHeader>
 
+    <FlyoutItem Title="Screen"
+                Route="Screen">
+
+        <ShellContent ContentTemplate="{DataTemplate pages:ScreenPage}"/>
+
+    </FlyoutItem>
+    
     <FlyoutItem Title="Name"
                 Route="Name">
-        <Tab Title="Западная">
-            <ShellContent Title="Франция">
-                <ContentPage Title="Франция">
-                    <StackLayout>
-                        <Label Text="Париж"/>
-                    </StackLayout>
-                </ContentPage>
-            </ShellContent>
-
-            <ShellContent Title="Британия">
-                <ContentPage Title="Британия">
-                    <StackLayout>
-                        <Label Text="Лондон"/>
-                    </StackLayout>
-                </ContentPage>
-            </ShellContent>
-        </Tab>
+        
+        <ContentPage NavigationPage.HasNavigationBar="False">
+            <StackLayout>
+                <Label Text="fwegrgregrehteht"/>
+            </StackLayout>
+        </ContentPage>
 
     </FlyoutItem>
 

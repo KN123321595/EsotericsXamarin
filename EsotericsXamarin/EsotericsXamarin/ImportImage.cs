@@ -12,6 +12,8 @@ namespace EsotericsXamarin
         public int most_similar_to { get; set; }
         public string desc { get; set; }
         public string similar_image_path { get; set; }
+        public string return_image { get; set; }
+        public double percent { get; set; }
 
     }
 }

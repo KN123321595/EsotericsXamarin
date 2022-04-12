@@ -11,23 +11,24 @@
                              HorizontalOptions="CenterAndExpand"
                              Spacing="20">
 
-                    <Button Text="Сделать фото"
+                    <Button Text="Take photo"
                             x:Name="TakePhotoBtn"
                             Clicked="TakePhotoAsync"
-                            Margin="30,20"/>
+                            Margin="45,20"/>
 
-                    <Button Text="Выбрать фото"
+                    <Button Text="Get photo"
                             x:Name="getPhotoBtn"
                             Clicked="GetPhotoAsync"
                             Margin="20,20"/>
+                    
 
                 </StackLayout>
 
                 <Image x:Name="image"/>
-
                 
-
             </StackLayout>
+
+            
 
             <Button x:Name="enterBut" 
                     Text="Complete"
@@ -35,6 +36,14 @@
                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.9, Constant=0}"
                     WidthRequest="300"
                     Clicked="enterBut_Clicked"/>
+
+            <Frame x:Name="activityFrame" BackgroundColor="LightGray" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                   Opacity="0.7"
+                   IsVisible="False"
+                   >
+                <ActivityIndicator IsRunning="True" HorizontalOptions="Center" Color="DodgerBlue"/>
+            </Frame>
             
         </RelativeLayout>
     </ContentPage.Content>

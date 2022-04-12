@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +37,11 @@ namespace EsotericsXamarin
 
         private void Button_Reg_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ScreenPage());
+            //Navigation.PushAsync(new ScreenPage());
+
+
+            
+            
         }
     }
 }
