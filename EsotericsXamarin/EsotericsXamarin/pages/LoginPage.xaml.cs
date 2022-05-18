@@ -24,6 +24,12 @@ namespace EsotericsXamarin
             };
             forgotPasswordLabel.GestureRecognizers.Add(tap);
 
+            loginLabel.Text = AppResources.loginText2;
+            loginBut.Text = AppResources.loginText2;
+            emailEntry.Placeholder = AppResources.EmailText;
+            pasEntry.Placeholder = AppResources.PasswordText;
+            forgotPasswordLabel.Text = AppResources.ForgotPasswordText;
+
         }
 
         private void Button_Clicked(object sender, EventArgs e)

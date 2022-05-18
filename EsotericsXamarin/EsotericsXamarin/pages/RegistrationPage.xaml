@@ -12,32 +12,33 @@
                 
                 <Image Source="user.png" 
                        HeightRequest="90"/>
-                
-                <Label Text="Registration" HorizontalOptions="Center" 
+
+                <Label x:Name="regLabel"
+                       HorizontalOptions="Center" 
                        FontSize="36" 
                        FontAttributes="Bold" 
                        TextColor="Black"/>
-                
-                <Entry Placeholder="Email" 
-                       />
-                
-                <Entry Placeholder="Password" 
+
+                <Entry x:Name="emailEntry" />
+
+                <Entry x:Name="passwordEntry" 
                        IsPassword="True"/>
-                
-                <Entry Placeholder="Phone Number" 
+
+                <Entry x:Name="telephoneEntry" 
                        Keyboard="Telephone"/>
-                
-                <Button Text="Registration" 
+
+                <Button x:Name="regBut" 
                         Margin="110,0,110,0" 
                         TextColor="White"
                         BackgroundColor="DarkGray"
-                        Clicked="Button_Reg_Clicked"/>
+                        Clicked="Button_Reg_Clicked"
+                        />
+
             </StackLayout>
 
-            <Label x:Name="logInLabel" 
-                   Text="Log-in" 
+            <Label x:Name="logInLabel"
                    FontSize="22" 
-                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.8, Constant=-20}"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.3, Constant=0}"
                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-50}"/>
 
         </RelativeLayout>

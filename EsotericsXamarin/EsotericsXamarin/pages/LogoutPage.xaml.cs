@@ -20,11 +20,11 @@ namespace EsotericsXamarin
         protected async override void OnAppearing()
         {
 
-            bool result = await DisplayAlert(null, "Are you sure on to Logout?", "Yes", "No");
+            bool result = await DisplayAlert(null, $"{AppResources.LogoutPopup}", $"{AppResources.Yes}", $"{AppResources.No}");
 
             if (result)
             {
-                
+                System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
             }
 
             else

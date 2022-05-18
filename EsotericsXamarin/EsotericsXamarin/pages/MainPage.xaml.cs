@@ -13,6 +13,10 @@ namespace EsotericsXamarin
         public MainPage()
         {
             InitializeComponent();
+
+            screenFloyuot.Title = AppResources.ScreenText;
+            //logoutFloyout.Title = AppResources.LogoutText;
+            historyFloyout.Title = AppResources.HistoryText;
         }
     }
 }

@@ -26,6 +26,13 @@ namespace EsotericsXamarin
             };
             logInLabel.GestureRecognizers.Add(tap);
 
+            regLabel.Text = AppResources.RegistrationText;
+            emailEntry.Placeholder = AppResources.EmailText;
+            passwordEntry.Placeholder = AppResources.PasswordText;
+            telephoneEntry.Placeholder = AppResources.PhoneNumberText;
+            regBut.Text = AppResources.RegistrationText;
+            logInLabel.Text = AppResources.logInText;
+            
         }
 
         protected override void OnAppearing()

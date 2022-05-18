@@ -4,47 +4,65 @@
              x:Class="EsotericsXamarin.ScreenPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <RelativeLayout>
-            <StackLayout HorizontalOptions="Center">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
 
-                <StackLayout Orientation="Horizontal" 
-                             HorizontalOptions="CenterAndExpand"
-                             Spacing="20">
 
-                    <Button Text="Take photo"
-                            x:Name="TakePhotoBtn"
-                            Clicked="TakePhotoAsync"
-                            Margin="45,20"/>
+            <Button Grid.Row="0" Grid.Column="0" 
+                    x:Name="TakePhotoBtn"
+                    Clicked="TakePhotoAsync"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Center"
+                    Margin="0,20,0,0"/>
 
-                    <Button Text="Get photo"
-                            x:Name="getPhotoBtn"
-                            Clicked="GetPhotoAsync"
-                            Margin="20,20"/>
-                    
+            <Button Grid.Row="0" Grid.Column="1" 
+                    x:Name="getPhotoBtn"
+                    Clicked="GetPhotoAsync"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Center"
+                    Margin="0,20,0,0"/>
 
-                </StackLayout>
 
-                <Image x:Name="image"/>
-                
-            </StackLayout>
+            <Image Grid.Row="1" Grid.ColumnSpan="2"
+                   x:Name="image"/>
 
-            
 
-            <Button x:Name="enterBut" 
-                    Text="Complete"
-                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1, Constant=10}"
-                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.9, Constant=0}"
+            <Button Grid.Row="2" Grid.ColumnSpan="2" 
+                    x:Name="enterBut" 
                     WidthRequest="300"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
                     Clicked="enterBut_Clicked"/>
 
-            <Frame x:Name="activityFrame" BackgroundColor="LightGray" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
-                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            <Frame Grid.ColumnSpan="2" Grid.RowSpan="3"
+                   x:Name="activityFrame" 
+                   BackgroundColor="LightGray"
                    Opacity="0.7"
-                   IsVisible="False"
-                   >
+                   IsVisible="False">
+                
                 <ActivityIndicator IsRunning="True" HorizontalOptions="Center" Color="DodgerBlue"/>
             </Frame>
-            
-        </RelativeLayout>
+
+            <Frame Grid.ColumnSpan="2" Grid.Row="2" 
+                   VerticalOptions="End"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,15"
+                   x:Name="popupLayout"                    
+                   HasShadow="True"
+                   CornerRadius="50"
+                   IsVisible="False"
+                   Scale="0">
+                <Label x:Name="againLabel"/>
+            </Frame>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

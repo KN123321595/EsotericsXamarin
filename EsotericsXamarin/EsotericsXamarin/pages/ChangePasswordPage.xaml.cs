@@ -15,6 +15,10 @@ namespace EsotericsXamarin
         public ChangePasswordPage()
         {
             InitializeComponent();
+
+            oldPasEntry.Placeholder = AppResources.OldPasswordText;
+            newPasEntry.Placeholder = AppResources.NewPasswordText;
+            applyBut.Text = AppResources.ApplyText;
         }
     }
 }

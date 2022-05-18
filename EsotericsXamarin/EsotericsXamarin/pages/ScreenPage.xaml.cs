@@ -4,10 +4,12 @@ using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -23,18 +25,27 @@ namespace EsotericsXamarin
 
         private MediaFile mediaFile;
 
+        private bool exitTimer = false;
+
 
         public static string fileName;
+        public static double percent;
+
+        public static ImportImageOriginal original;
 
 
         public ScreenPage()
         {
             InitializeComponent();
 
+            TakePhotoBtn.Text = AppResources.TakePhotoText;
+            getPhotoBtn.Text = AppResources.GetPhotoText;
+            enterBut.Text = AppResources.CompleteText;
+            againLabel.Text = AppResources.AgainText;
             
         }
 
-        public static ImportImageOriginal original;
+        
         //кнопка выбрать фото
         private async void TakePhotoAsync(object sender, EventArgs e)
         {
@@ -127,6 +138,23 @@ namespace EsotericsXamarin
 
                 StateOfActivityFrame();
 
+                
+
+                var content = new MultipartFormDataContent();
+
+                content.Add(new StreamContent(mediaFile.GetStream()), "\"image\"", mediaFile.Path);
+
+
+                HttpResponseMessage response = await client.PostAsync(ServerUrls.importImageUrl, content);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+                {
+                    await DisplayAlert(null, $"{AppResources.ErrorServerText}", "OK");
+                    StateOfActivityFrame();
+                    return;
+                }
+
+
                 var memoryStream = new MemoryStream();
 
                 await mediaFile.GetStream().CopyToAsync(memoryStream);
@@ -139,16 +167,13 @@ namespace EsotericsXamarin
 
 
 
-                var content = new MultipartFormDataContent();
-
-                content.Add(new StreamContent(mediaFile.GetStream()), "\"image\"", mediaFile.Path);
-
-
-                HttpResponseMessage response = await client.PostAsync(ServerUrls.importImageUrl, content);
-
                 string result = await response.Content.ReadAsStringAsync();
 
+
                 ImportImage importImage = JsonConvert.DeserializeObject<ImportImage>(result);
+
+                percent = importImage.percent;
+
 
                 response = await client.GetAsync(ServerUrls.importImageOriginalUrl + importImage.most_similar_to);
 
@@ -157,6 +182,7 @@ namespace EsotericsXamarin
                 original = JsonConvert.DeserializeObject<ImportImageOriginal>(result);
 
 
+                StateOfActivityFrame();
 
                 await Navigation.PushAsync(new ResultPage());
             }
@@ -164,13 +190,11 @@ namespace EsotericsXamarin
             catch(Exception ex)
             {
                 await DisplayAlert("Error message", ex.Message, "OK");
-
-            }
-
-            finally
-            {
                 StateOfActivityFrame();
+
             }
+
+            
 
           
 
@@ -190,6 +214,73 @@ namespace EsotericsXamarin
                 activityFrame.IsVisible = true;
                 return;
             }
+        }
+
+        //переопределение метода нажатия кнопки назад
+        protected override bool OnBackButtonPressed()
+        {
+
+            AnimationPopup();
+
+            return true;
+
+        }
+
+        //управление анимацией всплывающего окна при нажатии кнопки назад
+        private async void AnimationPopup()
+        {
+
+
+            if (!popupLayout.IsVisible)
+            {
+                popupLayout.IsVisible = !popupLayout.IsVisible;
+                //this.popuplayout.AnchorX = 1;
+                //this.popuplayout.AnchorY = 1;
+
+                Animation scaleAnimation = new Animation(
+                    f => popupLayout.Scale = f,
+                    0,
+                    1,
+                    Easing.SinInOut);
+
+                Animation fadeAnimation = new Animation(
+                    f => popupLayout.Opacity = f,
+                    0.2,
+                    1,
+                    Easing.SinInOut);
+
+                scaleAnimation.Commit(popupLayout, "popupScaleAnimation", 250);
+                fadeAnimation.Commit(popupLayout, "popupFadeAnimation", 250);
+
+                //запускаем таймер на 2 секунды для подтверждения выхода из приложения
+                Device.StartTimer(TimeSpan.FromSeconds(2), () =>
+                {
+                    exitTimer = false;
+
+                    AnimationPopup();
+
+                    return false;
+                });
+
+                exitTimer = true;
+            }
+            else
+            {
+                //если нажимаем на кнопку назад повторно, то выходим из приложения
+                if (exitTimer)
+                {
+                    Process.GetCurrentProcess().CloseMainWindow();
+                }
+
+                await Task.WhenAny<bool>
+                  (
+                    popupLayout.FadeTo(0, 200, Easing.SinInOut)
+                  );
+
+                popupLayout.IsVisible = !popupLayout.IsVisible;
+            }
+
+
         }
     }
 }

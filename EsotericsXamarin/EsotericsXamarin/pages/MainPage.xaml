@@ -13,58 +13,22 @@
         </StackLayout>
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Title="Screen"
-                Route="Screen">
+    <FlyoutItem 
+                Route="Screen"
+                x:Name="screenFloyuot">
 
         <ShellContent ContentTemplate="{DataTemplate pages:ScreenPage}"/>
 
     </FlyoutItem>
-    
-    <FlyoutItem Title="Name"
-                Route="Name">
-        
-        <ContentPage NavigationPage.HasNavigationBar="False">
-            <StackLayout>
-                <Label Text="fwegrgregrehteht"/>
-            </StackLayout>
-        </ContentPage>
+
+    <FlyoutItem 
+                x:Name="historyFloyout">
+
+        <ShellContent ContentTemplate="{DataTemplate pages:HistoryPage}"/>
 
     </FlyoutItem>
 
-    <FlyoutItem Title="Vechile">
 
-        <ContentPage NavigationPage.HasNavigationBar="False">
-            <StackLayout>
-                <Label Text="fwegrgregrehteht"/>
-            </StackLayout>
-        </ContentPage>
-        
-    </FlyoutItem>
 
-    <FlyoutItem Title="Contact">
-
-        <ContentPage NavigationPage.HasNavigationBar="False">
-            <StackLayout>
-                <Label Text="fwegrgregrehteht"/>
-            </StackLayout>
-        </ContentPage>
-        
-    </FlyoutItem>
-
-    <FlyoutItem Title="OrderHistory">
-
-        <ContentPage NavigationPage.HasNavigationBar="False">
-            <StackLayout>
-                <Label Text="fwegrgregrehteht"/>
-            </StackLayout>
-        </ContentPage>
-        
-    </FlyoutItem>
-    
-    <FlyoutItem Title="Logout">
-
-        <ShellContent ContentTemplate="{DataTemplate pages:LogoutPage}"/>
-
-    </FlyoutItem>
 
 </Shell>
